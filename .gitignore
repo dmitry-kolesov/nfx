@@ -93,3 +93,11 @@ Source/Tools/gluec/obj/
 Source/Tools/rsc/obj/
 Source/Testing/Manual/WaveTestSite/Pages/AboutUs.htm.auto.cs
 Source/Testing/Manual/WaveTestSite/Pages/*.auto.cs
+Source/NFX/Media/PDF/bin/Debug/tmp2.pdf
+Source/NFX/Media/PDF/obj/Debug/pdftest.csproj.FileListAbsolute.txt
+Source/NFX/Media/PDF/bin/
+Source/NFX/Media/PDF/obj/
+Source/PdfTestApp/obj/Debug/PdfTestApp.csproj.FileListAbsolute.txt
+Source/PdfTestApp/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+Source/PdfTestApp/obj/
+Source/PdfTestApp/bin/
