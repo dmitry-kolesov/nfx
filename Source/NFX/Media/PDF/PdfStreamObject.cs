@@ -1,51 +1,60 @@
 namespace NFX.Media.PDF
 {
-    internal class PdfStreamObject : IPdfObject
+    public class PdfStreamObject : IPdfObject
     {
-        private string index;
-        private string size;
-        private string str;
-        private string text;
-        private string x;
-        private string y;
-
+        #region .ctor
         public PdfStreamObject()
         {
-            text = "";
+            m_text = "";
         }
 
         public PdfStreamObject(string output)
         {
-            text = output;
+            m_text = output;
         }
+        #endregion
 
+        #region Fields
+
+        private string m_index;
+        private string m_size;
+        private string m_str;
+        private string m_text;
+        private string m_x;
+        private string m_y;
+
+        #endregion
+
+        #region Public
         public string GetText()
         {
-            if (text == "")
+            if (m_text == "")
             {
-                text += "" + index + " 0 obj\r\n";
-                text += "<< /Length 73 >>\r\n";
-                text += "stream\r\n";
-                text += "BT\r\n";
-                text += "/F1 " + size + " Tf\r\n";
-                text += x + " " + y + " " + "Td\r\n";
-                text += "(" + str + ") Tj\r\n";
-                text += "ET\r\nendstream\r\nendobj\r\n";
+                m_text += "" + m_index + " 0 obj\r\n";
+                m_text += "<< /Length 73 >>\r\n";
+                m_text += "stream\r\n";
+                m_text += "BT\r\n";
+                m_text += "/F1 " + m_size + " Tf\r\n";
+                m_text += m_x + " " + m_y + " " + "Td\r\n";
+                m_text += "(" + m_str + ") Tj\r\n";
+                m_text += "ET\r\nendstream\r\nendobj\r\n";
             }
-            return text;
+            return m_text;
         }
 
         public void SetIndex(string i)
         {
-            index = i;
+            m_index = i;
         }
 
         public void Set(string xCoord, string yCoord, string s, string sz)
         {
-            x = xCoord;
-            y = yCoord;
-            str = s;
-            size = sz;
+            m_x = xCoord;
+            m_y = yCoord;
+            m_str = s;
+            m_size = sz;
         }
+
+        #endregion
     }
 }

@@ -1,49 +1,61 @@
 namespace NFX.Media.PDF
 {
-    internal class PdfLineStream : IPdfObject
+    public class PdfLineStream : IPdfObject
     {
-        private string fromX;
-        private string fromY;
-        private string index;
-        private string text;
-        private string toX;
-        private string toY;
+        #region .ctor
 
         public PdfLineStream()
         {
-            index = "";
-            fromX = "";
-            fromY = "";
-            toY = "";
-            toX = "";
-            text = "";
+            m_index = "";
+            m_fromX = "";
+            m_fromY = "";
+            m_toY = "";
+            m_toX = "";
+            m_text = "";
         }
+
+        #endregion
+
+        #region Fields
+
+        private string m_fromX;
+        private string m_fromY;
+        private string m_index;
+        private string m_text;
+        private string m_toX;
+        private string m_toY;
+
+        #endregion
+
+        #region Public
 
         public string GetText()
         {
-            if (text == "")
+            if (m_text == "")
             {
-                text += "" + index + " 0 obj\r\n";
-                text += "<< /Length 73 >>\r\n";
-                text += "stream\r\n";
-                text += "" + fromX + " " + fromY + " m\r\n";
-                text += "" + toX + " " + toY + " l\r\n";
-                text += "S\r\nendstream\r\nendobj\r\n";
+                m_text += "" + m_index + " 0 obj\r\n";
+                m_text += "<< /Length 73 >>\r\n";
+                m_text += "stream\r\n";
+                m_text += "" + m_fromX + " " + m_fromY + " m\r\n";
+                m_text += "" + m_toX + " " + m_toY + " l\r\n";
+                m_text += "S\r\nendstream\r\nendobj\r\n";
             }
-            return text;
+            return m_text;
         }
 
         public void SetIndex(string i)
         {
-            index = i;
+            m_index = i;
         }
 
         public void SetCoords(int x, int y, int x2, int y2)
         {
-            fromX = "" + x;
-            fromY = "" + y;
-            toX = "" + x2;
-            toY = "" + y2;
+            m_fromX = "" + x;
+            m_fromY = "" + y;
+            m_toX = "" + x2;
+            m_toY = "" + y2;
         }
+
+        #endregion
     }
 }

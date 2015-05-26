@@ -2,41 +2,53 @@ using System.Collections;
 
 namespace NFX.Media.PDF
 {
-    internal class PdfPagesObject : IPdfObject
+    public class PdfPagesObject : IPdfObject
     {
-        public string Index { get; private set; }
-        private string text;
-        private readonly ArrayList pageIndexes;
-
+        #region .ctor
         public PdfPagesObject()
         {
-            text = "";
-            pageIndexes = new ArrayList();
+            m_text = "";
+            m_pageIndexes = new ArrayList();
         }
 
         public PdfPagesObject(string output)
         {
-            text = output;
+            m_text = output;
         }
+        #endregion
 
+        #region Fields
+
+        private string m_text;
+        private readonly ArrayList m_pageIndexes;
+
+        #endregion
+
+        #region Properties
+
+        public string Index { get; private set; }
+        
+        #endregion
+
+        #region Public
         public string GetText()
         {
-            if (text == "")
+            if (m_text == "")
             {
-                text += "" + Index + " 0 obj\r\n";
-                text += "<<\r\n";
-                text += "/Type /Pages\r\n";
-                text += "/Kids [";
-                for (var i = 0; i < pageIndexes.Count; i++)
+                m_text += "" + Index + " 0 obj\r\n";
+                m_text += "<<\r\n";
+                m_text += "/Type /Pages\r\n";
+                m_text += "/Kids [";
+                for (var i = 0; i < m_pageIndexes.Count; i++)
                 {
-                    text += ((string) pageIndexes[i]) + " 0 R ";
+                    m_text += ((string) m_pageIndexes[i]) + " 0 R ";
                 }
-                text += "]\r\n";
-                text += "/Count " + pageIndexes.Count + "\r\n";
-                text += ">>\r\nendobj\r\n";
+                m_text += "]\r\n";
+                m_text += "/Count " + m_pageIndexes.Count + "\r\n";
+                m_text += ">>\r\nendobj\r\n";
             }
 
-            return text;
+            return m_text;
         }
 
         public void SetIndex(string i)
@@ -46,7 +58,8 @@ namespace NFX.Media.PDF
 
         public void AddPage(string index)
         {
-            pageIndexes.Add(index);
+            m_pageIndexes.Add(index);
         }
+        #endregion
     }
 }

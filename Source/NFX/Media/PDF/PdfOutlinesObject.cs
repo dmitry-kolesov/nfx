@@ -1,22 +1,34 @@
 namespace NFX.Media.PDF
 {
-    internal class PdfOutlinesObject : IPdfObject
+    public class PdfOutlinesObject : IPdfObject
     {
-        private readonly string text;
+        #region .ctor
 
         public PdfOutlinesObject()
         {
-            var text = "";
+            m_text = "";
         }
 
         public PdfOutlinesObject(string output)
         {
-            text = output;
+            m_text = output;
         }
+
+        #endregion
+
+        #region Fields
+
+        private readonly string m_text;
+
+        #endregion
+
+        #region Public
 
         public string GetText()
         {
-            return text;
+            return m_text;
         }
+
+        #endregion
     }
 }

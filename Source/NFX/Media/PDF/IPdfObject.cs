@@ -1,6 +1,6 @@
 namespace NFX.Media.PDF
 {
-    internal interface IPdfObject
+    public interface IPdfObject
     {
         string GetText();
     }

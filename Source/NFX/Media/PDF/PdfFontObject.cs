@@ -1,22 +1,34 @@
 namespace NFX.Media.PDF
 {
-    internal class PdfFontObject : IPdfObject
+    public class PdfFontObject : IPdfObject
     {
-        private readonly string text;
+        #region .ctor
 
         public PdfFontObject()
         {
-            var text = "";
+            m_text = "";
         }
 
         public PdfFontObject(string output)
         {
-            text = output;
+            m_text = output;
         }
+
+        #endregion
+
+        #region Fields
+
+        private readonly string m_text;
+
+        #endregion
+
+        #region Public
 
         public string GetText()
         {
-            return text;
+            return m_text;
         }
+
+        #endregion
     }
 }
